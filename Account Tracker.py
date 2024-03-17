@@ -101,30 +101,42 @@ def rootWindow():
     
     mainloop()
 
+def mainloop():
+    while True:
+        whoCheck = str(subprocess.check_output("who"))
 
-while True:
-    whoCheck = str(subprocess.check_output("who"))
 
+        if acc in whoCheck:
+            
+            now = datetime.now()
 
-    if acc in whoCheck:
-        
-        now = datetime.now()
+            currentTime = now.strftime("%H:%M:%S")
+            
+            print("[" + currentTime + "] Account " + acc + " has beed detected!")
+            warnWindow()
+            break
 
-        currentTime = now.strftime("%H:%M:%S")
-        
-        print("[" + currentTime + "] Account " + acc + " has beed detected!")
-        warnWindow()
-        break
+        if "root" in whoCheck:
+            
+            now = datetime.now()
 
-    if "root" in whoCheck:
-        
-        now = datetime.now()
+            currentTime = now.strftime("%H:%M:%S")
+            
+            print("[" + currentTime + "] Account root has beed detected!")
+            rootWindow()
+            break
 
-        currentTime = now.strftime("%H:%M:%S")
-        
-        print("[" + currentTime + "] Account root has beed detected!")
-        rootWindow()
-        break
+try:
+    mainloop()
+
+except:
+    KeyboardInterrupt
+    now = datetime.now()
+    
+    currentTime = now.strftime("%H:%M:%S")
+
+    print("\n[" + currentTime + "] Stopping...")
+
 
 #    stop = input()
 
