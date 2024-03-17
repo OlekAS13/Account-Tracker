@@ -101,7 +101,7 @@ def rootWindow():
     
     mainloop()
 
-def mainloop():
+def main():
     while True:
         whoCheck = str(subprocess.check_output("who"))
 
@@ -126,8 +126,9 @@ def mainloop():
             rootWindow()
             break
 
+
 try:
-    mainloop()
+    main()
 
 except:
     KeyboardInterrupt
@@ -136,6 +137,8 @@ except:
     currentTime = now.strftime("%H:%M:%S")
 
     print("\n[" + currentTime + "] Stopping...")
+
+
 
 
 #    stop = input()
