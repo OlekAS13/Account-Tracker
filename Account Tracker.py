@@ -10,7 +10,7 @@ currentTime = now.strftime("%H:%M:%S")
 
 acc = str(input("Account to warn about: "))
 
-print("[" + currentTime + "] Accounts scanning started for account " + acc +"...\nThe window will apear as soon as the account will be detected! (exit to stop)")
+print("[" + currentTime + "] Accounts scanning started for account " + acc +"...\nThe window will apear as soon as the account will be detected! (ctrl + C to stop)")
 
 
 def poweroff():
@@ -126,15 +126,15 @@ while True:
         rootWindow()
         break
 
-    stop = input()
+#    stop = input()
 
-    if stop == "exit":
-        now = datetime.now()
-
-        currentTime = now.strftime("%H:%M:%S")
-        
-        print("[" + currentTime + "] Stopping...")
-        break
+#    if stop == "exit":
+#        now = datetime.now()
+#
+#        currentTime = now.strftime("%H:%M:%S")
+#        
+#        print("[" + currentTime + "] Stopping...")
+#        break
 
     
 
