@@ -66,6 +66,42 @@ def warnWindow():
     mainloop()
 
 
+def rootWindow(): 
+    master = Tk()
+    master.configure(background="grey")
+    master.title("Account Tracker")
+    master.geometry("300x270")
+
+
+    logged = Canvas(master, width=250, height=45, background="grey", highlightbackground="grey")
+
+    logged.create_text(126, 25, text="root LOGGED IN", fill="black", font=("Helvetica 15 bold"))
+    logged.pack()
+
+    actions = Canvas(master, width=250, height=20, background="grey", highlightbackground="grey")
+
+    actions.create_text(126, 8, text="Actions:", fill="black", font=("Helvetica 10 "))
+    actions.pack()
+
+    Button(master, text="Suspend", command=suspend, width=10, background="grey", highlightbackground="black", font=("Helvetica 15")).pack()
+    
+    Button(master, text="Power Off", command=poweroff, width=10, background="grey", highlightbackground="black", font=("Helvetica 15")).pack()
+
+    Button(master, text="Reboot", command=reboot, width=10, background="grey", highlightbackground="black", font=("Helvetica 15")).pack()
+
+    Button(master, text="Ignore", command=master.destroy, width=10, background="grey", highlightbackground="black", font=("Helvetica 15")).pack()
+
+    close = Canvas(master, width=250, height=50, background="grey", highlightbackground="grey")
+
+    close.create_text(126, 32, text="You can close this\nwindow after performing\nan action", fill="black", font=("Helvetica 10 "))
+    close.pack()
+
+    #Button(master, text="Log out", command=logout).grid(row=3)
+
+    
+    mainloop()
+
+
 while True:
     whoCheck = str(subprocess.check_output("who"))
 
@@ -80,6 +116,16 @@ while True:
         warnWindow()
         break
 
+    if "root" in whoCheck:
+        
+        now = datetime.now()
+
+        currentTime = now.strftime("%H:%M:%S")
+        
+        print("[" + currentTime + "] Account root has beed detected!")
+        rootWindow()
+        break
+
     stop = input()
 
     if stop == "exit":
@@ -92,4 +138,4 @@ while True:
 
     
 
-#Author: OlekAS13, 12.03.2024, 23:47
+#Author: OlekAS13, 17.03.2024, 14:07
